@@ -10,6 +10,15 @@ class Post extends Model
 {
     use HasUuid;
 
+    protected $fillable = [
+        'slug',
+        'author_id',
+        'title',
+        'content',
+        'cover',
+        'status',
+    ];
+
     public function author(): BelongsTo 
     {
         return $this->belongsTo(User::class, 'author_id');
