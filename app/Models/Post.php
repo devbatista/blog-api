@@ -11,6 +11,10 @@ class Post extends Model
 {
     use HasUuid;
 
+    protected $primaryKey = 'id';
+    public $incrementing = false;
+    protected $keyType = 'string';
+
     protected $fillable = [
         'slug',
         'author_id',
