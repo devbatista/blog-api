@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('title');
             $table->text('content');
-            $table->string('conver')->nullable();
+            $table->string('cover')->nullable();
             $table->enum('status', ['PUBLISHED', 'DRAFT'])->default('DRAFT');
             $table->timestamps();
         });
