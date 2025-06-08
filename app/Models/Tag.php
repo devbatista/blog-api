@@ -9,12 +9,16 @@ use App\Models\Traits\HasUuid;
 class Tag extends Model
 {
     use HasUuid;
-    
+
+    protected $primaryKey = 'id';
+    public $incrementing = false;
+    protected $keyType = 'string';
+
     public $timestamps = false;
 
     protected $fillable = ['name'];
 
-    public function posts(): BelongsToMany 
+    public function posts(): BelongsToMany
     {
         return $this->belongsToMany(Post::class, 'post_tag', 'tag_id', 'post_id');
     }
