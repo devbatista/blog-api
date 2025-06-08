@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use App\Models\Traits\HasUuid;
 
 class Tag extends Model
 {
+    use HasUuid;
+    
     public $timestamps = false;
 
     protected $fillable = ['name'];
