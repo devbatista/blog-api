@@ -17,7 +17,7 @@ class PostSeeder extends Seeder
         Post::create([
             'title' => 'Post 1',
             'content' => 'Post 1 content',
-            'slug' => 'post_1',
+            'slug' => 'post-1',
             'cover' => null,
             'status' => 'PUBLISHED',
             'author_id' => User::inRandomOrder()->first()->id
@@ -25,7 +25,7 @@ class PostSeeder extends Seeder
         Post::create([
             'title' => 'Post 2',
             'content' => 'Post 2 content',
-            'slug' => 'post_2',
+            'slug' => 'post-2',
             'cover' => null,
             'status' => 'PUBLISHED',
             'author_id' => User::inRandomOrder()->first()->id
@@ -33,7 +33,7 @@ class PostSeeder extends Seeder
         Post::create([
             'title' => 'Post 3',
             'content' => 'Post 3 content',
-            'slug' => 'post_3',
+            'slug' => 'post-3',
             'cover' => null,
             'status' => 'PUBLISHED',
             'author_id' => User::inRandomOrder()->first()->id
@@ -41,7 +41,7 @@ class PostSeeder extends Seeder
         Post::create([
             'title' => 'Post 4',
             'content' => 'Post 4 content',
-            'slug' => 'post_4',
+            'slug' => 'post-4',
             'cover' => null,
             'status' => 'PUBLISHED',
             'author_id' => User::inRandomOrder()->first()->id
@@ -49,7 +49,7 @@ class PostSeeder extends Seeder
         Post::create([
             'title' => 'Post 5',
             'content' => 'Post 5 content',
-            'slug' => 'post_5',
+            'slug' => 'post-5',
             'cover' => null,
             'status' => 'PUBLISHED',
             'author_id' => User::inRandomOrder()->first()->id
@@ -57,7 +57,7 @@ class PostSeeder extends Seeder
         Post::create([
             'title' => 'Post 6',
             'content' => 'Post 6 content',
-            'slug' => 'post_6',
+            'slug' => 'post-6',
             'cover' => null,
             'status' => 'PUBLISHED',
             'author_id' => User::inRandomOrder()->first()->id
@@ -65,7 +65,7 @@ class PostSeeder extends Seeder
         Post::create([
             'title' => 'Post 7',
             'content' => 'Post 7 content',
-            'slug' => 'post_7',
+            'slug' => 'post-7',
             'cover' => null,
             'status' => 'PUBLISHED',
             'author_id' => User::inRandomOrder()->first()->id
@@ -73,7 +73,7 @@ class PostSeeder extends Seeder
         Post::create([
             'title' => 'Post 8',
             'content' => 'Post 8 content',
-            'slug' => 'post_8',
+            'slug' => 'post-8',
             'cover' => null,
             'status' => 'PUBLISHED',
             'author_id' => User::inRandomOrder()->first()->id
@@ -81,7 +81,7 @@ class PostSeeder extends Seeder
         Post::create([
             'title' => 'Post 9',
             'content' => 'Post 9 content',
-            'slug' => 'post_9',
+            'slug' => 'post-9',
             'cover' => null,
             'status' => 'PUBLISHED',
             'author_id' => User::inRandomOrder()->first()->id
@@ -89,7 +89,7 @@ class PostSeeder extends Seeder
         Post::create([
             'title' => 'Post 10',
             'content' => 'Post 10 content',
-            'slug' => 'post_10',
+            'slug' => 'post-10',
             'cover' => null,
             'status' => 'PUBLISHED',
             'author_id' => User::inRandomOrder()->first()->id
