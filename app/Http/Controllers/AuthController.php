@@ -8,7 +8,8 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
-    public function signup(Request $request) {
+    public function signup(Request $request)
+    {
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|unique:users',
@@ -28,7 +29,8 @@ class AuthController extends Controller
         return $returnData;
     }
 
-    public function signin(Request $request) {
+    public function signin(Request $request)
+    {
         $request->validate([
             'email' => 'required',
             'password' => 'required|min:6'
@@ -52,7 +54,8 @@ class AuthController extends Controller
         ]);
     }
 
-    public function verify(Request $request) {
+    public function verify(Request $request)
+    {
         $user = $request->user();
 
         return response()->json([
