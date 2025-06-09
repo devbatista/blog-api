@@ -20,3 +20,4 @@ Route::prefix('auth')->group(function() {
 });
 
 Route::get('/posts', [PostController::class, 'getPosts']);
+Route::get('posts/{slug}', [PostController::class, 'getPost']);
