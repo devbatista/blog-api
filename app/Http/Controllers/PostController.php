@@ -27,6 +27,9 @@ class PostController extends Controller
             ];
         }
 
-        return ['posts' => $pages_posts, 'page' => $posts->currentPage()];
+        return [
+            'posts' => $pages_posts,
+            'page' => $posts->currentPage()
+        ];
     }
 }
