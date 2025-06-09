@@ -42,7 +42,7 @@ Route::post('/auth/signin', function(Request $request){
     $user = User::firstWhere('email', $request->email);
 
     if (!$user || !Hash::check($request->password, $user->password)) {
-        return response()->json(['error' => 'Falha na autenticação'], 401);
+        return response()->json(['error' => 'Authentication failed'], 401);
     }
 
     $token = $user->createToken($user->id.'-'.$user->email)->plainTextToken;
