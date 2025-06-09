@@ -12,8 +12,8 @@ Route::get('/ping', function(){
     return 'pong';
 });
 
-Route::prefix('auth')->group(function(){
+Route::prefix('auth')->group(function() {
     Route::post('/signup', [AuthController::class, 'signup']);
-    Route::post('/signin', [AuthController::class, 'signup']);
-    Route::get('/verify', [AuthController::class, 'signup'])->middleware('auth:sanctum');
+    Route::post('/signin', [AuthController::class, 'signin']);
+    Route::get('/verify', [AuthController::class, 'verify'])->middleware('auth:sanctum');
 });
