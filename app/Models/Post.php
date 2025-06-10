@@ -38,7 +38,7 @@ class Post extends Model
     public static function byTags(array $tagIds): Builder
     {
         return self::whereHas('tags', function($query) use ($tagIds) {
-            $query->whereIn('id', $tagIds);
+            $query->whereIn('tags.id', $tagIds);
         });
     }
 }
