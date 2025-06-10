@@ -54,4 +54,17 @@ class PostController extends Controller
 
         return response()->json(['post' => $post]);
     }
+
+    public function getRelatedPosts(string $slug)
+    {
+        $post = Post::firstWhere('slug', $slug);
+
+        if (!$post) {
+            return response()->json(['error' => '404 Not Found'], 404);
+        }
+
+        $tags = $post->tags->pluck('id');
+
+        return $tags;
+    }
 }
