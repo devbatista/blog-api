@@ -65,11 +65,14 @@ class PostController extends Controller
 
         $tags = $post->tags->pluck('id')->toArray();
 
-        $getPosts = Post::byTags($tags)->get();
-        $posts = [];
+        $posts = Post::byTags($tags)
+            ->where('id', '!=', $post->id)
+            ->get();
 
-        foreach($getPosts as $post) {
-            $posts[] = [
+        $relatedPosts = [];
+
+        foreach($posts as $post) {
+            $relatedPosts[] = [
                 'id' => $post->id,
                 'title' => $post->title,
                 'created_at' => $post->created_at,
@@ -81,6 +84,6 @@ class PostController extends Controller
             ];
         }
 
-        return ['posts' => $posts, 'count' => count($posts)];
+        return ['posts' => $relatedPosts, 'count' => count($relatedPosts)];
     }
 }

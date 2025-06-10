@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Traits\HasUuid;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Builder;
 
 class Post extends Model
 {
@@ -34,7 +35,7 @@ class Post extends Model
         return $this->belongsToMany(Tag::class, 'post_tag', 'post_id', 'tag_id');
     }
 
-    public static function byTags(array $tagIds)
+    public static function byTags(array $tagIds): Builder
     {
         return self::whereHas('tags', function($query) use ($tagIds) {
             $query->whereIn('id', $tagIds);
