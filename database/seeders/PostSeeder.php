@@ -18,12 +18,13 @@ class PostSeeder extends Seeder
         $allTagIds = Tag::pluck('id')->toArray();
 
         for ($i = 1; $i <= 10; $i++) {
+            $status = rand(1,100) <= 70 ? 'PUBLISHED' : 'DRAFT';
             $post = Post::create([
                 'title' => "Post $i",
                 'content' => "Post $i content",
                 'slug' => "post-$i",
                 'cover' => null,
-                'status' => 'PUBLISHED',
+                'status' => $status,
                 'author_id' => User::inRandomOrder()->first()->id
             ]);
             $tagIdsShuffled = $allTagIds;
