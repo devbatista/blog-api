@@ -63,8 +63,24 @@ class PostController extends Controller
             return response()->json(['error' => '404 Not Found'], 404);
         }
 
-        $tags = $post->tags->pluck('id');
+        $tags = $post->tags->pluck('id')->toArray();
 
-        return $tags;
+        $getPosts = Post::byTags($tags)->get();
+        $posts = [];
+
+        foreach($getPosts as $post) {
+            $posts[] = [
+                'id' => $post->id,
+                'title' => $post->title,
+                'created_at' => $post->created_at,
+                'cover' => $post->cover,
+                'author_name' => $post->author->name,
+                'tags' => $post->tags->implode('name', ', '),
+                'content' => $post->content,
+                'slug' => $post->slug
+            ];
+        }
+
+        return ['posts' => $posts, 'count' => count($posts)];
     }
 }

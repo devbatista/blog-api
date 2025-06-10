@@ -24,13 +24,20 @@ class Post extends Model
         'status',
     ];
 
-    public function author(): BelongsTo 
+    public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'author_id');
     }
 
-    public function tags(): BelongsToMany 
+    public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class, 'post_tag', 'post_id', 'tag_id');
+    }
+
+    public static function byTags(array $tagIds)
+    {
+        return self::whereHas('tags', function($query) use ($tagIds) {
+            $query->whereIn('id', $tagIds);
+        });
     }
 }
