@@ -67,12 +67,11 @@ class PostController extends Controller
 
         $posts = Post::byTags($tags)
             ->where('id', '!=', $post->id)
+            ->limit(5)
             ->get();
 
-        $relatedPosts = [];
-
-        foreach($posts as $post) {
-            $relatedPosts[] = [
+        $relatedPosts = $posts->map(function($post) {
+            return [
                 'id' => $post->id,
                 'title' => $post->title,
                 'created_at' => $post->created_at,
@@ -82,8 +81,11 @@ class PostController extends Controller
                 'content' => $post->content,
                 'slug' => $post->slug
             ];
-        }
+        });
 
-        return ['posts' => $relatedPosts, 'count' => count($relatedPosts)];
+        return response()->json([
+            'posts' => $relatedPosts,
+            'count' => count($relatedPosts)
+        ]);
     }
 }
