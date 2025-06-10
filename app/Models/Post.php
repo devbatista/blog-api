@@ -25,6 +25,11 @@ class Post extends Model
         'status',
     ];
 
+    public function scopePublished($query): Builder
+    {
+        return $query->where('status', 'PUBLISHED');
+    }
+
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'author_id');

@@ -10,7 +10,7 @@ class PostController extends Controller
     public function getPosts(Request $request)
     {
         $posts_per_page = 3;
-        $posts = Post::paginate($posts_per_page);
+        $posts = Post::published()->paginate($posts_per_page);
 
         $pages_posts = [];
 
@@ -35,7 +35,7 @@ class PostController extends Controller
 
     public function getPost(string $slug)
     {
-        $post = Post::firstWhere('slug', $slug);
+        $post = Post::published()->firstWhere('slug', $slug);
 
         if (!$post) {
             return response()->json(['error' => '404 Not Found'], 404);
@@ -57,7 +57,7 @@ class PostController extends Controller
 
     public function getRelatedPosts(string $slug)
     {
-        $post = Post::firstWhere('slug', $slug);
+        $post = Post::published()->firstWhere('slug', $slug);
 
         if (!$post) {
             return response()->json(['error' => '404 Not Found'], 404);
@@ -66,6 +66,7 @@ class PostController extends Controller
         $tags = $post->tags->pluck('id')->toArray();
 
         $posts = Post::byTags($tags)
+            ->published()
             ->where('id', '!=', $post->id)
             ->limit(5)
             ->get();
