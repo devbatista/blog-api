@@ -30,6 +30,11 @@ class Post extends Model
         return $query->where('status', 'PUBLISHED');
     }
 
+    public function scopeDraft($query): Builder
+    {
+        return $query->where('status', 'DRAFT');
+    }
+
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'author_id');
