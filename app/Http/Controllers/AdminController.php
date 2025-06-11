@@ -51,4 +51,18 @@ class AdminController extends Controller
 
         return response()->json(['post' => $post]);
     }
+
+    public function deletePost(string $slug, Request $request)
+    {
+        $user = $request->user();
+        $post = $user->posts()->firstWhere('slug', $slug);
+
+        if (!$post) {
+            return response()->json(['error' => '404 Not Found'], 404);
+        }
+
+        $post->delete();
+
+        return response()->json(['error' => 'Post deleted successfully'], 200);
+    }
 }
